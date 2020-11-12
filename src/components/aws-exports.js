@@ -10,5 +10,5 @@ const awsmobile = {
     userPoolWebClientId: `${process.env.REACT_APP_USER_POOL_WEB_CLIENT_ID}`
   }
 };
-
+console.log(awsmobile['Auth']['userPoolId'])
 export default awsmobile;
