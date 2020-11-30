@@ -39,6 +39,8 @@ const Task = () => {
 
     async function fetchTask() {
       const id = location.pathname.split('/')[2]
+      // code to setup authorization and getting token on frontend and backend adapted from "API Gateway integration" of the following tutorial
+      // https://medium.com/zenofai/serverless-web-application-architecture-using-react-with-amplify-part2-f51315f4756c
       const sessionObject = await Auth.currentSession();
       const idToken = sessionObject ? sessionObject.idToken.jwtToken : null;
       await loadTask(idToken, id);
@@ -309,7 +311,7 @@ return (
     {!isNewTask && task.id && ownsTask &&
       <div className='task-actions'>
         <button onClick={updateTask}>Update task</button>
-        <button onClick={deleteTask}>Delete task</button>
+        <button className="delete-btn" onClick={deleteTask}>Delete task</button>
       </div>
     }
     {!isNewTask && task.id && !ownsTask &&
